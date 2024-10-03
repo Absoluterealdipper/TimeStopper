@@ -1,6 +1,7 @@
 package com.dipper.timestopper;
 
 import com.dipper.timestopper.item.ModItems;
+import com.dipper.timestopper.sound.ModSounds;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -52,6 +53,7 @@ public class TimeStopper
         modEventBus.addListener(this::commonSetup);
 
         ModItems.register(modEventBus);
+        ModSounds.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.

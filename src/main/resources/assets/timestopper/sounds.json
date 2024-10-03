@@ -1,0 +1,16 @@
+{
+  "time_freeze": {
+    "sounds": [
+      {
+        "name": "timestopper:time_freeze"
+      }
+    ]
+  },
+  "time_unfreeze": {
+    "sounds": [
+      {
+        "name": "timestopper:time_unfreeze"
+      }
+    ]
+  }
+}
