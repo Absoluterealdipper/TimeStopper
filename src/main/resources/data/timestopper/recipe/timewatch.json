@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "C": {
+      "item": "minecraft:end_crystal"
+    },
+    "X": {
+      "item": "minecraft:clock"
+    }
+  },
+  "pattern": [
+    "GCG",
+    "GXG",
+    "GDG"
+  ],
+  "result": {
+    "count": 1,
+    "id": "timestopper:timewatch"
+  }
+}

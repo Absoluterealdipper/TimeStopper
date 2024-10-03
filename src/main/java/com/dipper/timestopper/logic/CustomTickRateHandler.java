@@ -1,9 +1,13 @@
 package com.dipper.timestopper.logic;
 
+import net.minecraft.network.chat.*;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.ServerTickRateManager;
+import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.entity.player.Player;
 
+import javax.swing.text.JTextComponent;
+import java.util.List;
 import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -39,13 +43,13 @@ public class CustomTickRateHandler {
             public void run() {
                 if (tickRate > 0) {
                     CustomTickRateHandler.setCustomTickRate(Objects.requireNonNull(player.getServer()), tickRate, false);
-                    System.out.println("Tick rate set to: " + tickRate);
                     tickRate -= step;  // Reduce tick rate by step
                 } else {
                     CustomTickRateHandler.setCustomTickRate(Objects.requireNonNull(player.getServer()), tickRate, true);  // Freeze at 0 ticks
-                    System.out.println("Tick rate set to 0. Time frozen.");
                     timer.cancel();  // Stop the task once tick rate reaches 0
                 }
+                PlayerChatMessage chatMessage = PlayerChatMessage.unsigned(player.getUUID(), "Tick rate set to: " + tickRate);
+                //player.createCommandSourceStack().sendChatMessage(new OutgoingChatMessage.Player(chatMessage), false, ChatType.bind(ChatType.CHAT, player));
             }
         };
 
@@ -62,13 +66,13 @@ public class CustomTickRateHandler {
             public void run() {
                 if (tickRate < 20) {
                     CustomTickRateHandler.setCustomTickRate(Objects.requireNonNull(player.getServer()), tickRate, false);
-                    System.out.println("Tick rate set to: " + tickRate);
                     tickRate += step;  // Reduce tick rate by step
                 } else {
                     CustomTickRateHandler.setCustomTickRate(Objects.requireNonNull(player.getServer()), tickRate, false);  // Freeze at 0 ticks
-                    System.out.println("Tick rate set to 0. Time frozen.");
                     timer.cancel();  // Stop the task once tick rate reaches 0
                 }
+                PlayerChatMessage chatMessage = PlayerChatMessage.unsigned(player.getUUID(), "Tick rate set to: " + tickRate);
+                //player.createCommandSourceStack().sendChatMessage(new OutgoingChatMessage.Player(chatMessage), false, ChatType.bind(ChatType.CHAT, player));
             }
         };
 

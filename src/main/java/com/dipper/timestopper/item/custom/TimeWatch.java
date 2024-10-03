@@ -35,7 +35,7 @@ public class TimeWatch extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        //player.getCooldowns().addCooldown(this, 30);
+        player.getCooldowns().addCooldown(this, 18);
         if (!level.isClientSide()) {
 
             if (timeIsFrozen) {
@@ -48,7 +48,6 @@ public class TimeWatch extends Item {
 
                 level.playSound(null, player.getX(), player.getY(),player.getZ(), ModSounds.TIME_FREEZE.get(), SoundSource.PLAYERS, 1f, 1f);
                 CustomTickRateHandler.freezeTime(player);
-                //CustomTickRateHandler.setCustomTickRate(Objects.requireNonNull(player.getServer()), 20, true);
             }
             return InteractionResultHolder.success(player.getItemInHand(hand));
         }
